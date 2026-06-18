@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تقرير المخزون | 7X Library Manager</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/print/print.css">
+  <link rel="stylesheet" href="../assets/css/print/reports.css">
+  <style>
+    body { background: #1e293b; margin: 0; padding: 40px 20px; font-family: 'Cairo', sans-serif; }
+    .page-controls {
+      max-width: 210mm; margin: 0 auto 24px; display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 12px;
+    }
+    .page-controls .title-area { display: flex; align-items: center; gap: 10px; color: #fff; }
+    .page-controls .title-area i { color: #d4af37; font-size: 1.2rem; }
+    .page-controls .title-area h2 { font-size: 1.1rem; font-weight: 700; }
+    .page-controls .btns { display: flex; gap: 8px; }
+    .ctrl-btn {
+      padding: 8px 18px; border: none; border-radius: 6px; cursor: pointer;
+      font-family: 'Cairo', sans-serif; font-size: .82rem; font-weight: 700;
+      display: flex; align-items: center; gap: 6px; transition: all .2s;
+    }
+    .ctrl-btn.gold { background: linear-gradient(135deg, #d4af37, #b8960c); color: #fff; }
+    .ctrl-btn.gold:hover { filter: brightness(1.1); transform: translateY(-1px); }
+    .ctrl-btn.ghost { background: rgba(255,255,255,.1); color: #fff; border: 1px solid rgba(255,255,255,.2); }
+    .ctrl-btn.back { background: rgba(255,255,255,.06); color: rgba(255,255,255,.6); }
+    @media print {
+      body { background: #fff !important; padding: 0 !important; }
+      .page-controls { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-controls">
+    <div class="title-area">
+      <i class="fa-solid fa-warehouse"></i>
+      <h2>تقرير جرد المخزون</h2>
+    </div>
+    <div class="btns">
+      <button class="ctrl-btn back" onclick="history.back()"><i class="fa-solid fa-arrow-right"></i> رجوع</button>
+      <button class="ctrl-btn ghost" onclick="window.print()"><i class="fa-solid fa-file-pdf"></i> تصدير PDF</button>
+      <button class="ctrl-btn gold" onclick="window.print()"><i class="fa-solid fa-print"></i> طباعة</button>
+    </div>
+  </div>
+
+  <div id="report-container"></div>
+
+  <script src="../assets/js/data.js"></script>
+  <script src="../assets/js/print/print-manager.js"></script>
+  <script src="../assets/js/print/report-generator.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const today = new Date().toLocaleDateString('ar-MA', { year: 'numeric', month: 'long', day: 'numeric' });
+      const html = ReportGenerator.buildInventoryReport(DataStore.products, today);
+      document.getElementById('report-container').innerHTML = html;
+    });
+  </script>
+</body>
+</html>

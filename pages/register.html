@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>إنشاء حساب | 7X Library Manager</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/auth.css">
+</head>
+<body>
+<div class="auth-page">
+  <div class="auth-illustration">
+    <div class="floating-shapes">
+      <div class="floating-shape"></div><div class="floating-shape"></div><div class="floating-shape"></div>
+    </div>
+    <div class="auth-brand">
+      <div class="auth-brand-logo"><i class="fa-solid fa-book-open"></i></div>
+      <h1>7X Library Manager</h1>
+      <p>انضم إلى آلاف أصحاب المكتبات في المغرب</p>
+    </div>
+    <div class="auth-stats">
+      <div class="auth-stat"><div class="auth-stat-value">مجاني</div><div class="auth-stat-label">للتجربة</div></div>
+      <div class="auth-stat"><div class="auth-stat-value">5 دقائق</div><div class="auth-stat-label">للإعداد</div></div>
+      <div class="auth-stat"><div class="auth-stat-value">RTL</div><div class="auth-stat-label">دعم عربي كامل</div></div>
+    </div>
+  </div>
+
+  <div class="auth-form-panel">
+    <div class="auth-form-header">
+      <h2>إنشاء حساب جديد 🚀</h2>
+      <p>أدخل بيانات متجرك للبدء</p>
+    </div>
+
+    <form class="auth-form" id="registerForm" novalidate>
+      <div class="form-row form-row-2">
+        <div class="form-group">
+          <label class="form-label" for="shopName">اسم المكتبة <span class="required">*</span></label>
+          <div class="form-control-icon">
+            <input class="form-control" type="text" id="shopName" name="shop_name" placeholder="مكتبة الوفاء" required>
+            <i class="fa-solid fa-store"></i>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="ownerName">اسم صاحب المكتبة <span class="required">*</span></label>
+          <div class="form-control-icon">
+            <input class="form-control" type="text" id="ownerName" name="owner_name" placeholder="محمد أمين" required>
+            <i class="fa-solid fa-user"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row form-row-2">
+        <div class="form-group">
+          <label class="form-label" for="regPhone">رقم الهاتف <span class="required">*</span></label>
+          <div class="form-control-icon">
+            <input class="form-control" type="tel" id="regPhone" name="phone" placeholder="06XXXXXXXX" required>
+            <i class="fa-solid fa-phone"></i>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="regCity">المدينة</label>
+          <div class="form-control-icon">
+            <select class="form-select" id="regCity" name="city">
+              <option value="">اختر المدينة</option>
+              <option>الدار البيضاء</option><option>الرباط</option><option>فاس</option>
+              <option>مراكش</option><option>طنجة</option><option>أكادير</option>
+              <option>مكناس</option><option>وجدة</option><option>أخرى</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="regEmail">البريد الإلكتروني <span class="required">*</span></label>
+        <div class="form-control-icon">
+          <input class="form-control" type="email" id="regEmail" name="email" placeholder="email@example.com" required>
+          <i class="fa-solid fa-envelope"></i>
+        </div>
+      </div>
+
+      <div class="form-row form-row-2">
+        <div class="form-group">
+          <label class="form-label" for="regPass">كلمة المرور <span class="required">*</span></label>
+          <div class="form-control-icon" style="position:relative">
+            <input class="form-control" type="password" id="regPass" name="password" placeholder="8 أحرف على الأقل" required>
+            <i class="fa-solid fa-lock"></i>
+            <button type="button" class="password-toggle" id="pwToggle1"><i class="fa-solid fa-eye"></i></button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="regPassConfirm">تأكيد كلمة المرور <span class="required">*</span></label>
+          <div class="form-control-icon" style="position:relative">
+            <input class="form-control" type="password" id="regPassConfirm" name="password_confirm" placeholder="أعد كتابة كلمة المرور" required>
+            <i class="fa-solid fa-lock"></i>
+            <button type="button" class="password-toggle" id="pwToggle2"><i class="fa-solid fa-eye"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Password strength -->
+      <div class="form-group">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+          <span style="font-size:.78rem;color:var(--text-muted)">قوة كلمة المرور</span>
+          <span style="font-size:.78rem;font-weight:600" id="strengthLabel">—</span>
+        </div>
+        <div class="progress" style="height:6px">
+          <div class="progress-bar" id="strengthBar" style="width:0%;transition:width .3s,background .3s"></div>
+        </div>
+      </div>
+
+      <label class="form-check" style="margin-bottom:20px">
+        <input type="checkbox" class="form-check-input" id="agreeTerms" required>
+        <span style="font-size:.85rem;color:var(--text-secondary)">أوافق على <a href="#" style="color:var(--primary-600);font-weight:600">شروط الاستخدام</a> وسياسة الخصوصية</span>
+      </label>
+
+      <button type="submit" class="btn btn-primary btn-full btn-lg" id="regBtn">
+        <i class="fa-solid fa-rocket"></i>
+        إنشاء الحساب
+      </button>
+    </form>
+
+    <div class="auth-footer-text">
+      لديك حساب بالفعل؟ <a href="login.html">تسجيل الدخول</a>
+    </div>
+  </div>
+</div>
+
+<div id="toast-container"></div>
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/app.js"></script>
+<script>
+  // Password toggles
+  ['pwToggle1','pwToggle2'].forEach((id, i) => {
+    const btn = document.getElementById(id);
+    const inp = document.getElementById(i === 0 ? 'regPass' : 'regPassConfirm');
+    btn.addEventListener('click', () => {
+      const show = inp.type === 'password';
+      inp.type = show ? 'text' : 'password';
+      btn.querySelector('i').className = show ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye';
+    });
+  });
+
+  // Password strength
+  document.getElementById('regPass').addEventListener('input', function() {
+    const v = this.value;
+    let score = 0;
+    if (v.length >= 8)  score++;
+    if (/[A-Z]/.test(v)) score++;
+    if (/[0-9]/.test(v)) score++;
+    if (/[^A-Za-z0-9]/.test(v)) score++;
+    const bar = document.getElementById('strengthBar');
+    const lbl = document.getElementById('strengthLabel');
+    const map = [
+      { w:'0%', c:'', t:'—' },
+      { w:'25%', c:'var(--danger)', t:'ضعيفة' },
+      { w:'50%', c:'var(--warning)', t:'متوسطة' },
+      { w:'75%', c:'var(--primary-500)', t:'جيدة' },
+      { w:'100%', c:'var(--success)', t:'قوية' }
+    ];
+    bar.style.width = map[score].w;
+    bar.style.background = map[score].c;
+    lbl.textContent = map[score].t;
+    lbl.style.color = map[score].c;
+  });
+
+  // Submit
+  document.getElementById('registerForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const p1 = document.getElementById('regPass').value;
+    const p2 = document.getElementById('regPassConfirm').value;
+    if (p1 !== p2) { Toast.error('كلمتا المرور غير متطابقتين'); return; }
+    if (!document.getElementById('agreeTerms').checked) { Toast.warning('يجب الموافقة على شروط الاستخدام'); return; }
+    const btn = document.getElementById('regBtn');
+    btn.classList.add('btn-loading'); btn.disabled = true;
+    setTimeout(() => {
+      Toast.success('تم إنشاء حسابك بنجاح! يمكنك الآن تسجيل الدخول.');
+      setTimeout(() => { window.location.href = 'login.html'; }, 1500);
+    }, 1200);
+  });
+
+  const t = localStorage.getItem('7x_theme');
+  if (t) document.documentElement.setAttribute('data-theme', t);
+</script>
+</body>
+</html>
+

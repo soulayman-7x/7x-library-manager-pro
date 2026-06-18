@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>إيصال نقطة البيع | 7X Library Manager</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/print/print.css">
+  <link rel="stylesheet" href="../assets/css/print/receipt.css">
+  <style>
+    body { background: #1e293b; margin: 0; padding: 40px 20px; font-family: 'Cairo', sans-serif; }
+    .page-controls {
+      max-width: 80mm; margin: 0 auto 24px; display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 12px;
+    }
+    .page-controls .title-area { display: flex; align-items: center; gap: 10px; color: #fff; }
+    .page-controls .title-area i { color: #d4af37; font-size: 1rem; }
+    .page-controls .title-area h2 { font-size: .95rem; font-weight: 700; }
+    .page-controls .btns { display: flex; gap: 6px; }
+    .ctrl-btn {
+      padding: 6px 14px; border: none; border-radius: 6px; cursor: pointer;
+      font-family: 'Cairo', sans-serif; font-size: .78rem; font-weight: 700;
+      display: flex; align-items: center; gap: 5px; transition: all .2s;
+    }
+    .ctrl-btn.gold { background: linear-gradient(135deg, #d4af37, #b8960c); color: #fff; }
+    .ctrl-btn.gold:hover { filter: brightness(1.1); }
+    .ctrl-btn.ghost { background: rgba(255,255,255,.1); color: #fff; border: 1px solid rgba(255,255,255,.2); }
+    .ctrl-btn.back { background: rgba(255,255,255,.06); color: rgba(255,255,255,.6); }
+    .ctrl-btn.back:hover { color: #fff; }
+    @media print {
+      body { background: #fff !important; padding: 0 !important; }
+      .page-controls { display: none !important; }
+      @page { size: 80mm auto; margin: 2mm; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-controls">
+    <div class="title-area">
+      <i class="fa-solid fa-receipt"></i>
+      <h2>معاينة الإيصال</h2>
+    </div>
+    <div class="btns">
+      <button class="ctrl-btn back" onclick="history.back()"><i class="fa-solid fa-arrow-right"></i></button>
+      <button class="ctrl-btn gold" onclick="window.print()"><i class="fa-solid fa-print"></i> طباعة</button>
+    </div>
+  </div>
+
+  <div id="receipt-container"></div>
+
+  <script src="../assets/js/data.js"></script>
+  <script src="../assets/js/print/print-manager.js"></script>
+  <script src="../assets/js/print/invoice-generator.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Demo receipt
+      const saleData = InvoiceGenerator.fromCart([
+        { name: 'كراسة مسطرة 96 ورقة', qty: 3, price: 7.00 },
+        { name: 'قلم بيك كريستال أزرق', qty: 5, price: 2.00 },
+        { name: 'ورق تصوير A4', qty: 1, price: 40.00 },
+        { name: 'شريط لاصق شفاف', qty: 2, price: 3.00 },
+      ], {
+        invoiceNo: 'TKT-7829',
+        discount: 0,
+        paid: 87,
+        cashier: 'ADMIN'
+      });
+
+      document.getElementById('receipt-container').innerHTML = InvoiceGenerator.buildReceipt(saleData);
+    });
+  </script>
+</body>
+</html>

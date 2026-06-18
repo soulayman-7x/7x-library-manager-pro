@@ -1,0 +1,85 @@
+/* ================================================================
+   7X Library Manager — Global Print & PDF Foundation
+   print.css — Controls all printable document behaviour
+   ================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;800&display=swap');
+
+/* ── CSS Variables (Print Palette) ── */
+:root {
+  --print-navy:       #0f2044;
+  --print-royal:      #1a3a6e;
+  --print-blue-mid:   #2563eb;
+  --print-gold:       #b8960c;
+  --print-gold-light: #d4af37;
+  --print-gold-pale:  #fdf6e3;
+  --print-white:      #ffffff;
+  --print-off-white:  #f8fafc;
+  --print-border:     #d1d5db;
+  --print-border-dark:#9ca3af;
+  --print-text:       #0f172a;
+  --print-muted:      #64748b;
+  --print-font:       'Cairo', 'Tajawal', sans-serif;
+}
+
+/* ── Screen Base (shared for preview and print) ── */
+.doc-base {
+  font-family: var(--print-font);
+  direction: rtl;
+  color: var(--print-text);
+  background: var(--print-white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── @media print global reset ── */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 1.2cm 1.4cm;
+  }
+
+  @page :first { margin-top: 0.8cm; }
+
+  *, *::before, *::after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  html, body {
+    width: 210mm;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+    font-family: var(--print-font) !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  /* Hide everything that's not a template */
+  .sidebar, .navbar, .sidebar-overlay, .main-wrapper > .navbar,
+  .page-header-actions, .btn:not(.print-only),
+  .table-actions, .nav-action-btn, .dropdown,
+  #toast-container, .stat-card, canvas,
+  .chart-container, .pos-layout, .pos-cart,
+  .pos-products, .modal-header, .modal-footer,
+  .modal-overlay {
+    display: none !important;
+  }
+
+  .main-wrapper, body.ltr .main-wrapper, body:not(.ltr) .main-wrapper {
+    margin: 0 !important;
+  }
+
+  .main-content {
+    padding: 0 !important;
+    animation: none !important;
+  }
+
+  /* Page break utilities */
+  .page-break-before { page-break-before: always; break-before: page; }
+  .page-break-after  { page-break-after: always;  break-after: page; }
+  .no-break          { page-break-inside: avoid;  break-inside: avoid; }
+}

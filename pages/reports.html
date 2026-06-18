@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>لوحة التقارير | 7X Library Manager</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/print/reports.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div class="sidebar-overlay" id="sidebarOverlay"></div><aside class="sidebar" id="sidebar"><div class="sidebar-header"><div class="sidebar-logo"><img src="../assets/images/7x-library-logo.png" alt="7X" style="width:100%;height:100%;object-fit:contain;"></div><div class="sidebar-brand"><h1>7X Library Manager</h1><span>نظام إدارة متكامل</span></div></div><nav class="sidebar-nav"><div class="nav-section-label">الرئيسية</div><div class="nav-item"><a href="../index.html" class="nav-link"><i class="fa-solid fa-house"></i><span class="nav-link-text">لوحة التحكم</span></a></div><div class="nav-section-label">نقطة البيع</div><div class="nav-item"><a href="pos.html" class="nav-link"><i class="fa-solid fa-cash-register"></i><span class="nav-link-text">نقطة البيع</span></a></div><div class="nav-item"><a href="services.html" class="nav-link"><i class="fa-solid fa-hand-holding-dollar"></i><span class="nav-link-text">الخدمات</span></a></div><div class="nav-section-label">المنتجات</div><div class="nav-item has-submenu"><a href="#" class="nav-link"><i class="fa-solid fa-cubes"></i><span class="nav-link-text">المنتجات</span></a><div class="sub-menu"><div class="nav-item"><a href="products.html" class="nav-link"><i class="fa-solid fa-table-list"></i><span class="nav-link-text">قائمة المنتجات</span></a></div><div class="nav-item"><a href="product-add.html" class="nav-link"><i class="fa-solid fa-circle-plus"></i><span class="nav-link-text">إضافة منتج</span></a></div><div class="nav-item"><a href="categories.html" class="nav-link"><i class="fa-solid fa-layer-group"></i><span class="nav-link-text">الأصناف</span></a></div><div class="nav-item"><a href="barcode.html" class="nav-link"><i class="fa-solid fa-barcode"></i><span class="nav-link-text">ماسح الباركود</span></a></div></div></div><div class="nav-section-label">المشتريات</div><div class="nav-item has-submenu"><a href="#" class="nav-link"><i class="fa-solid fa-cart-flatbed"></i><span class="nav-link-text">المشتريات</span></a><div class="sub-menu"><div class="nav-item"><a href="purchases.html" class="nav-link"><i class="fa-solid fa-file-invoice"></i><span class="nav-link-text">فواتير الشراء</span></a></div><div class="nav-item"><a href="purchase-add.html" class="nav-link"><i class="fa-solid fa-file-circle-plus"></i><span class="nav-link-text">فاتورة جديدة</span></a></div></div></div><div class="nav-section-label">المصاريف</div><div class="nav-item has-submenu"><a href="#" class="nav-link"><i class="fa-solid fa-money-bill-trend-up"></i><span class="nav-link-text">المصاريف</span></a><div class="sub-menu"><div class="nav-item"><a href="expenses.html" class="nav-link"><i class="fa-solid fa-rectangle-list"></i><span class="nav-link-text">كل المصاريف</span></a></div><div class="nav-item"><a href="expense-add.html" class="nav-link"><i class="fa-solid fa-circle-plus"></i><span class="nav-link-text">إضافة مصروف</span></a></div></div></div><div class="nav-section-label">العملاء والموردون</div><div class="nav-item"><a href="customers.html" class="nav-link"><i class="fa-solid fa-user-group"></i><span class="nav-link-text">العملاء</span></a></div><div class="nav-item"><a href="suppliers.html" class="nav-link"><i class="fa-solid fa-building-columns"></i><span class="nav-link-text">الموردون</span></a></div><div class="nav-section-label">التقارير</div><div class="nav-item has-submenu"><a href="#" class="nav-link"><i class="fa-solid fa-chart-mixed"></i><span class="nav-link-text">التقارير</span></a><div class="sub-menu"><div class="nav-item"><a href="reports.html" class="nav-link"><i class="fa-solid fa-chart-line"></i><span class="nav-link-text">لوحة التقارير</span></a></div><div class="nav-item"><a href="report-sales.html" class="nav-link"><i class="fa-solid fa-arrow-trend-up"></i><span class="nav-link-text">تقرير المبيعات</span></a></div><div class="nav-item"><a href="report-expenses.html" class="nav-link"><i class="fa-solid fa-file-invoice-dollar"></i><span class="nav-link-text">تقرير المصاريف</span></a></div><div class="nav-item"><a href="report-profit.html" class="nav-link"><i class="fa-solid fa-sack-dollar"></i><span class="nav-link-text">تقرير الأرباح</span></a></div><div class="nav-item"><a href="report-inventory.html" class="nav-link"><i class="fa-solid fa-shelves"></i><span class="nav-link-text">تقرير المخزون</span></a></div></div></div><div class="nav-section-label">النظام</div><div class="nav-item"><a href="settings.html" class="nav-link"><i class="fa-solid fa-sliders"></i><span class="nav-link-text">الإعدادات</span></a></div><div class="nav-item"><a href="profile.html" class="nav-link"><i class="fa-solid fa-circle-user"></i><span class="nav-link-text">الملف الشخصي</span></a></div><div class="nav-item"><a href="activity-logs.html" class="nav-link"><i class="fa-solid fa-timeline"></i><span class="nav-link-text">سجل النشاط</span></a></div><div class="nav-item"><a href="help.html" class="nav-link"><i class="fa-solid fa-circle-question"></i><span class="nav-link-text">المساعدة</span></a></div></nav><div class="sidebar-footer"><div class="sidebar-user"><div class="user-avatar">م</div><div class="user-info"><strong>محمد المدير</strong><small>admin@7xlibrary.ma</small></div></div></div></aside>
+<div class="main-wrapper">
+<header class="navbar" id="navbar"><button class="navbar-toggle" id="navbarToggle"><i class="fa-solid fa-bars"></i></button><div class="navbar-breadcrumb"><a href="../index.html" style="color:var(--text-muted);font-size:.78rem">Dashboard</a><span style="margin:0 6px;color:var(--gray-300)">/</span><h1 class="page-title">لوحة التقارير</h1></div><div class="navbar-search"><i class="fa-solid fa-magnifying-glass"></i><input type="search" placeholder="Search..."></div><div class="navbar-actions"><a href="pos.html" class="nav-action-btn" title="POS" style="color:var(--gold-500)"><i class="fa-solid fa-cash-register"></i></a><button class="nav-action-btn" id="theme-toggle"><i class="fa-solid fa-moon"></i></button><button class="nav-action-btn" id="lang-toggle"><i class="fa-solid fa-globe"></i></button><div class="dropdown"><button class="nav-action-btn" data-dropdown="uDD" style="padding:2px;border-radius:6px;width:auto"><div class="avatar avatar-sm">م</div></button><div class="dropdown-menu" id="uDD"><div style="padding:12px 14px;border-bottom:1px solid var(--border-color)"><div style="font-weight:700;font-size:.8125rem">محمد المدير</div><div style="font-size:.72rem;color:var(--text-muted)">admin@7xlibrary.ma</div></div><a href="profile.html" class="dropdown-item"><i class="fa-solid fa-circle-user"></i>الملف الشخصي</a><a href="settings.html" class="dropdown-item"><i class="fa-solid fa-sliders"></i>الإعدادات</a><div class="divider" style="margin:4px 0"></div><a href="login.html" class="dropdown-item" style="color:var(--danger)"><i class="fa-solid fa-arrow-right-from-bracket" style="color:var(--danger)"></i>تسجيل الخروج</a></div></div></div></header>
+<main class="main-content">
+<div class="page-header">
+  <div class="page-header-title"><h2>لوحة التقارير</h2><p>تحليل شامل لأداء المكتبة</p></div>
+  <div class="page-header-actions">
+    <select class="form-select" style="width:140px" id="reportPeriod" onchange="updateReports()">
+      <option value="week">هذا الأسبوع</option><option value="month" selected>هذا الشهر</option><option value="year">هذا العام</option>
+    </select>
+    <button class="btn btn-outline-primary btn-sm" onclick="ReportGenerator.generateDashboardReport(DataStore.getDashboardStats())"><i class="fa-solid fa-file-arrow-down"></i> تصدير PDF</button>
+  </div>
+</div>
+
+<!-- KPI Row -->
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px">
+  <div class="stat-card"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px"><span style="font-size:.72rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em">إجمالي المبيعات</span><span class="badge badge-success badge-dot">+12%</span></div><div style="font-size:1.5rem;font-weight:800;color:var(--text-primary);letter-spacing:-.02em" data-count="18420" data-suffix=" د.م">0</div><div style="font-size:.72rem;color:var(--text-muted);margin-top:6px">مقارنة بالفترة السابقة</div></div>
+  <div class="stat-card"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px"><span style="font-size:.72rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em">الأرباح الصافية</span><span class="badge badge-success badge-dot">+8%</span></div><div style="font-size:1.5rem;font-weight:800;color:var(--text-primary);letter-spacing:-.02em" data-count="7640" data-suffix=" د.م">0</div><div style="font-size:.72rem;color:var(--text-muted);margin-top:6px">بعد خصم المصاريف</div></div>
+  <div class="stat-card"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px"><span style="font-size:.72rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em">إجمالي المصاريف</span><span class="badge badge-danger badge-dot">+5%</span></div><div style="font-size:1.5rem;font-weight:800;color:var(--text-primary);letter-spacing:-.02em" data-count="10780" data-suffix=" د.م">0</div><div style="font-size:.72rem;color:var(--text-muted);margin-top:6px">جميع أنواع المصاريف</div></div>
+  <div class="stat-card"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px"><span style="font-size:.72rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em">معدل هامش الربح</span><span class="badge badge-primary">مستقر</span></div><div style="font-size:1.5rem;font-weight:800;color:var(--text-primary);letter-spacing:-.02em">41.5%</div><div style="margin-top:8px"><div class="progress"><div class="progress-bar" style="width:41.5%"></div></div></div></div>
+</div>
+
+<!-- Revenue + Breakdown -->
+<div style="display:grid;grid-template-columns:2fr 1fr;gap:16px;margin-bottom:16px">
+  <div class="card">
+    <div class="card-header">
+      <div><div class="card-title">منحنى الإيرادات والمصاريف</div><div class="card-subtitle">مقارنة يومية لآخر 30 يوم</div></div>
+      <div style="display:flex;align-items:center;gap:16px">
+        <div style="display:flex;align-items:center;gap:6px;font-size:.72rem;color:var(--text-muted)"><span style="width:12px;height:3px;background:var(--primary-500);border-radius:2px;display:block"></span>إيرادات</div>
+        <div style="display:flex;align-items:center;gap:6px;font-size:.72rem;color:var(--text-muted)"><span style="width:12px;height:3px;background:var(--danger);border-radius:2px;display:block"></span>مصاريف</div>
+      </div>
+    </div>
+    <div class="card-body"><div style="height:240px"><canvas id="revenueChart"></canvas></div></div>
+  </div>
+  <div class="card">
+    <div class="card-header"><div class="card-title">توزيع المبيعات</div></div>
+    <div class="card-body" style="display:flex;flex-direction:column;align-items:center;gap:16px">
+      <div style="width:160px;height:160px"><canvas id="donutChart"></canvas></div>
+      <div style="width:100%" id="donutLegend"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Top Products + Daily Breakdown -->
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+  <div class="card">
+    <div class="card-header"><div class="card-title">أعلى المنتجات مبيعاً</div><a href="report-sales.html" class="btn btn-ghost btn-sm" style="font-size:.75rem">عرض الكل <i class="fa-solid fa-arrow-left"></i></a></div>
+    <div class="card-body" style="padding:0" id="topProductsBody"></div>
+  </div>
+  <div class="card">
+    <div class="card-header"><div class="card-title">المبيعات اليومية</div></div>
+    <div class="card-body"><div style="height:200px"><canvas id="dailyChart"></canvas></div></div>
+  </div>
+</div>
+</main></div>
+<div id="toast-container"></div>
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/app.js"></script>
+<script src="../assets/js/print/print-manager.js"></script>
+<script src="../assets/js/print/report-generator.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  App.initCounters();
+  Chart.defaults.font.family = "'Cairo','Inter',sans-serif";
+
+  // Revenue vs Expenses line chart
+  const labels = Array.from({length:30},(_,i)=>{const d=new Date();d.setDate(d.getDate()-29+i);return d.getDate()+'/'+( d.getMonth()+1);});
+  const revData = labels.map(()=>Math.round(300+Math.random()*800));
+  const expData = labels.map(()=>Math.round(100+Math.random()*400));
+
+  const revCtx = document.getElementById('revenueChart').getContext('2d');
+  const revGrad = revCtx.createLinearGradient(0,0,0,240);
+  revGrad.addColorStop(0,'rgba(99,102,241,.15)'); revGrad.addColorStop(1,'rgba(99,102,241,.0)');
+  const expGrad = revCtx.createLinearGradient(0,0,0,240);
+  expGrad.addColorStop(0,'rgba(239,68,68,.1)'); expGrad.addColorStop(1,'rgba(239,68,68,.0)');
+
+  new Chart(revCtx, {
+    type:'line',
+    data:{
+      labels,
+      datasets:[
+        { label:'إيرادات', data:revData, borderColor:'#6366f1', borderWidth:2, backgroundColor:revGrad, fill:true, tension:.4, pointRadius:0, pointHoverRadius:4, pointHoverBackgroundColor:'#6366f1' },
+        { label:'مصاريف', data:expData, borderColor:'#ef4444', borderWidth:2, backgroundColor:expGrad, fill:true, tension:.4, pointRadius:0, pointHoverRadius:4, pointHoverBackgroundColor:'#ef4444' }
+      ]
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      interaction:{ mode:'index', intersect:false },
+      plugins:{ legend:{display:false}, tooltip:{ backgroundColor:'rgba(9,9,18,.92)', titleColor:'#fff', bodyColor:'rgba(255,255,255,.7)', padding:12, cornerRadius:8, borderColor:'rgba(255,255,255,.08)', borderWidth:1 }},
+      scales:{
+        x:{ grid:{display:false}, border:{display:false}, ticks:{color:'#9ca3af', font:{size:10}, maxTicksLimit:8} },
+        y:{ grid:{color:'rgba(0,0,0,.04)', drawBorder:false}, border:{display:false}, ticks:{color:'#9ca3af', font:{size:10}, callback:v=>v+'د.م'} }
+      }
+    }
+  });
+
+  // Donut
+  const cats = DataStore.categories;
+  const colors = ['#6366f1','#f59e0b','#10b981','#ef4444','#06b6d4','#8b5cf6'];
+  const dCtx = document.getElementById('donutChart').getContext('2d');
+  new Chart(dCtx,{
+    type:'doughnut',
+    data:{ labels:cats.map(c=>c.name), datasets:[{ data:cats.map(c=>c.count), backgroundColor:colors, borderWidth:0, hoverOffset:4 }] },
+    options:{ responsive:true, maintainAspectRatio:false, cutout:'72%', plugins:{ legend:{display:false}, tooltip:{ backgroundColor:'rgba(9,9,18,.92)', titleColor:'#fff', bodyColor:'rgba(255,255,255,.7)', padding:10, cornerRadius:8 }} }
+  });
+
+  document.getElementById('donutLegend').innerHTML = cats.map((c,i)=>`
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;font-size:.78rem">
+      <div style="display:flex;align-items:center;gap:8px"><span style="width:8px;height:8px;border-radius:2px;background:${colors[i]};flex-shrink:0"></span><span style="color:var(--text-secondary)">${c.name}</span></div>
+      <span style="font-weight:700;color:var(--text-primary)">${c.count}</span>
+    </div>`).join('');
+
+  // Daily bar
+  const dayCtx = document.getElementById('dailyChart').getContext('2d');
+  const dayData = DataStore.getSalesChartData();
+  new Chart(dayCtx,{
+    type:'bar',
+    data:{
+      labels:dayData.map(d=>d.label),
+      datasets:[{ data:dayData.map(d=>d.revenue), backgroundColor:colors.map((_,i)=>i===dayData.length-1?'#6366f1':'rgba(99,102,241,.2)'), borderRadius:4, borderSkipped:false }]
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{display:false}, tooltip:{ backgroundColor:'rgba(9,9,18,.92)', titleColor:'#fff', bodyColor:'rgba(255,255,255,.7)', padding:10, cornerRadius:8 }},
+      scales:{
+        x:{ grid:{display:false}, border:{display:false}, ticks:{color:'#9ca3af', font:{size:10}} },
+        y:{ grid:{color:'rgba(0,0,0,.04)', drawBorder:false}, border:{display:false}, ticks:{color:'#9ca3af', font:{size:10}, callback:v=>v+'د.م'} }
+      }
+    }
+  });
+
+  // Top Products
+  document.getElementById('topProductsBody').innerHTML = DataStore.getTopProducts().map((p,i)=>`
+    <div style="display:flex;align-items:center;gap:12px;padding:10px 16px;border-bottom:1px solid var(--border-color)">
+      <span style="width:20px;font-size:.72rem;font-weight:700;color:var(--text-muted);flex-shrink:0">${i+1}</span>
+      <div style="flex:1;min-width:0">
+        <div style="font-size:.8125rem;font-weight:600;color:var(--text-primary);margin-bottom:3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${p.name}</div>
+        <div class="progress" style="height:4px"><div class="progress-bar" style="width:${Math.round(p.sold/120*100)}%"></div></div>
+      </div>
+      <div style="text-align:left;flex-shrink:0">
+        <div style="font-size:.8125rem;font-weight:700;color:var(--text-primary)">${p.revenue.toLocaleString('fr-MA')} د.م</div>
+        <div style="font-size:.68rem;color:var(--text-muted)">${p.sold} وحدة</div>
+      </div>
+    </div>`).join('');
+});
+function updateReports() { Toast.info('جاري تحديث التقارير...'); }
+</script>
+</body></html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>???????? | 7X Library Manager</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  
+</head>
+<body>
+<div class="sidebar-overlay" id="sidebarOverlay"></div><aside class="sidebar" id="sidebar"><div class="sidebar-header"><div class="sidebar-logo"><img src="../assets/images/7x-library-logo.png" alt="7X" style="width:100%;height:100%;object-fit:contain;"></div><div class="sidebar-brand"><h1>7X Library Manager</h1><span>???? ????? ??????</span></div></div><nav class="sidebar-nav"><div class="nav-section-label">????????</div><div class="nav-item"><a href="../index.html" class="nav-link"><i class="fa-solid fa-house"></i><span class="nav-link-text">???? ??????</span></a></div><div class="nav-section-label">???? ?????</div><div class="nav-item"><a href="pos.html" class="nav-link"><i class="fa-solid fa-cash-register"></i><span class="nav-link-text">???? ?????</span></a></div><div class="nav-item"><a href="services.html" class="nav-link"><i class="fa-solid fa-hand-holding-dollar"></i><span class="nav-link-text">???????</span></a></div><div class="nav-section-label">????????</div><div class="nav-item has-submenu"><a href="#" class="nav-link"><i class="fa-solid fa-cubes"></i><span class="nav-link-text">????????</span></a><div class="sub-menu"><div class="nav-item"><a href="products.html" class="nav-link"><i class="fa-solid fa-table-list"></i><span class="nav-link-text">????? ????????</span></a></div><div class="nav-item"><a href="product-add.html" class="nav-link"><i class="fa-solid fa-circle-plus"></i><span class="nav-link-text">????? ????</span></a></div></div></div><div class="nav-section-label">??????? ?????????</div><div class="nav-item"><a href="customers.html" class="nav-link"><i class="fa-solid fa-user-group"></i><span class="nav-link-text">???????</span></a></div><div class="nav-item"><a href="suppliers.html" class="nav-link"><i class="fa-solid fa-building-columns"></i><span class="nav-link-text">????????</span></a></div><div class="nav-section-label">????????</div><div class="nav-item"><a href="reports.html" class="nav-link"><i class="fa-solid fa-chart-mixed"></i><span class="nav-link-text">????????</span></a></div><div class="nav-section-label">??????</div><div class="nav-item"><a href="settings.html" class="nav-link"><i class="fa-solid fa-sliders"></i><span class="nav-link-text">?????????</span></a></div><div class="nav-item"><a href="profile.html" class="nav-link"><i class="fa-solid fa-circle-user"></i><span class="nav-link-text">????? ??????</span></a></div><div class="nav-item"><a href="activity-logs.html" class="nav-link"><i class="fa-solid fa-timeline"></i><span class="nav-link-text">??? ??????</span></a></div><div class="nav-item"><a href="help.html" class="nav-link"><i class="fa-solid fa-circle-question"></i><span class="nav-link-text">????????</span></a></div></nav><div class="sidebar-footer"><div class="sidebar-user"><div class="user-avatar">?</div><div class="user-info"><strong>???? ??????</strong><small>admin@7xlibrary.ma</small></div></div></div></aside>
+<div class="main-wrapper">
+<header class="navbar" id="navbar"><button class="navbar-toggle" id="navbarToggle"><i class="fa-solid fa-bars"></i></button><div class="navbar-breadcrumb"><a href="../index.html" style="color:var(--text-muted);font-size:.78rem">Dashboard</a><span style="margin:0 6px;color:var(--gray-300)">/</span><h1 class="page-title">????????</h1></div><div class="navbar-search"><i class="fa-solid fa-magnifying-glass"></i><input type="search" placeholder="Search..."></div><div class="navbar-actions"><a href="pos.html" class="nav-action-btn" style="color:var(--gold-500)"><i class="fa-solid fa-cash-register"></i></a><button class="nav-action-btn" id="theme-toggle"><i class="fa-solid fa-moon"></i></button><button class="nav-action-btn" id="lang-toggle"><i class="fa-solid fa-globe"></i></button></div></header>
+<main class="main-content">
+<div class="page-header"><div class="page-header-title"><h2>???????? ??????</h2><p>????? ????? ???? ??????? ????</p></div></div>
+<div style="display:grid;grid-template-columns:2fr 1fr;gap:20px;align-items:start">
+  <div>
+    <div class="card" style="margin-bottom:16px"><div class="card-header"><div class="card-title">??????? ???????</div></div><div class="card-body" style="padding:0" id="faqBody"></div></div>
+  </div>
+  <div>
+    <div class="card" style="margin-bottom:16px"><div class="card-header"><div class="card-title">??????? ????</div></div><div class="card-body">
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <a href="mailto:support@7xlibrary.ma" style="display:flex;align-items:center;gap:12px;padding:12px;border:1px solid var(--border-color);border-radius:var(--radius-md);text-decoration:none;transition:background .15s" onmouseover="this.style.background='var(--bg-hover)'" onmouseout="this.style.background=''">
+          <div style="width:36px;height:36px;background:var(--bg-active);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;color:var(--primary-600)"><i class="fa-solid fa-envelope-open-text"></i></div>
+          <div><div style="font-size:.8125rem;font-weight:700;color:var(--text-primary)">?????? ??????????</div><div style="font-size:.72rem;color:var(--text-muted)">support@7xlibrary.ma</div></div>
+        </a>
+        <a href="tel:+212600000000" style="display:flex;align-items:center;gap:12px;padding:12px;border:1px solid var(--border-color);border-radius:var(--radius-md);text-decoration:none;transition:background .15s" onmouseover="this.style.background='var(--bg-hover)'" onmouseout="this.style.background=''">
+          <div style="width:36px;height:36px;background:var(--success-light);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;color:var(--success)"><i class="fa-solid fa-phone-volume"></i></div>
+          <div><div style="font-size:.8125rem;font-weight:700;color:var(--text-primary)">????? ???????</div><div style="font-size:.72rem;color:var(--text-muted)">+212 600 000 000</div></div>
+        </a>
+      </div>
+    </div></div>
+    <div class="card"><div class="card-header"><div class="card-title">??????? ??????</div></div><div class="card-body">
+      <div style="display:flex;flex-direction:column;gap:8px;font-size:.78rem">
+        <div style="display:flex;justify-content:space-between"><span style="color:var(--text-muted)">???????</span><strong>v2.0.0</strong></div>
+        <div style="display:flex;justify-content:space-between"><span style="color:var(--text-muted)">??????</span><strong>Vanilla JS</strong></div>
+        <div style="display:flex;justify-content:space-between"><span style="color:var(--text-muted)">Chart.js</span><strong>v4.x</strong></div>
+        <div style="display:flex;justify-content:space-between"><span style="color:var(--text-muted)">Font Awesome</span><strong>v6.5</strong></div>
+      </div>
+    </div></div>
+  </div>
+</div>
+</main></div>
+<div id="toast-container"></div>
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/app.js"></script>
+<script>
+const faqs = [
+  {q:'??? ???? ?????? ???????',a:'???? ??? ??? ???????? > ????? ????? ?? ???? ???? ????????? ????????.'},
+  {q:'??? ???? ?????? ??????',a:'??? ????? ????? ?? ???? ?????? ????? ????? ???????? ?? ?? ??????? ??????.'},
+  {q:'??? ????? ??? ?????',a:'?? ????? ????????? ???? ??? ?????? ??????? ????? ?????? ???????.'},
+  {q:'??? ????? ???????? PDF?',a:'?? ?? ???? ?????? ???? ??? ?? "????? PDF" ?? ???? ??????.'},
+  {q:'?? ???? ?????? ????? ???????',a:'???? ???? ??? ?????? ????? ?? ???? ?????? ?? ?? ?????????.'},
+];
+let open = null;
+document.getElementById('faqBody').innerHTML = faqs.map((f,i)=>`
+  <div style="border-bottom:1px solid var(--border-color)">
+    <button onclick="toggleFaq(${i})" style="width:100%;text-align:right;padding:14px 20px;border:none;background:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:var(--font-sans);font-size:.8125rem;font-weight:600;color:var(--text-primary)">
+      <span>${f.q}</span><i class="fa-solid fa-chevron-down" id="faqIcon${i}" style="font-size:.7rem;color:var(--text-muted);transition:transform .2s"></i>
+    </button>
+    <div id="faqAns${i}" style="display:none;padding:0 20px 14px;font-size:.8125rem;color:var(--text-secondary);line-height:1.7">${f.a}</div>
+  </div>`).join('');
+function toggleFaq(i) {
+  const ans = document.getElementById('faqAns'+i);
+  const ico = document.getElementById('faqIcon'+i);
+  if (open!==null && open!==i) { document.getElementById('faqAns'+open).style.display='none'; document.getElementById('faqIcon'+open).style.transform=''; }
+  const isOpen = ans.style.display==='block';
+  ans.style.display = isOpen?'none':'block';
+  ico.style.transform = isOpen?'':'rotate(180deg)';
+  open = isOpen?null:i;
+}
+</script>
+</body></html>

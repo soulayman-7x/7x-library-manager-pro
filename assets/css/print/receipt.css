@@ -1,0 +1,216 @@
+/* ================================================================
+   7X Library Manager — Thermal Receipt CSS
+   Realistic POS Receipt (BIM / Marjane Style)
+   ================================================================ */
+
+.receipt-wrapper {
+  font-family: 'Cairo', 'Tajawal', monospace;
+  direction: rtl;
+  background: #fff;
+  color: #000;
+  width: 80mm;
+  margin: 0 auto;
+  padding: 12px 8px;
+  font-size: 11px;
+  line-height: 1.5;
+  box-shadow: 0 2px 30px rgba(0,0,0,.15);
+  border: 1px solid #e5e7eb;
+}
+
+/* ── Header ── */
+.rcpt-header {
+  text-align: center;
+  padding-bottom: 10px;
+  border-bottom: 2px dashed #000;
+  margin-bottom: 8px;
+}
+
+.rcpt-logo-icon {
+  width: 44px; height: 44px;
+  background: #0f2044;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 8px;
+  color: #d4af37; font-size: 1.2rem;
+}
+
+.rcpt-store-name {
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: #000;
+  margin: 0;
+}
+
+.rcpt-store-sub {
+  font-size: 10px;
+  color: #555;
+  margin: 2px 0;
+}
+
+.rcpt-store-info {
+  font-size: 9px;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* ── Meta ── */
+.rcpt-meta {
+  border-bottom: 1.5px dashed #000;
+  padding-bottom: 6px;
+  margin-bottom: 6px;
+  font-size: 10px;
+}
+
+.rcpt-meta-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2px;
+}
+
+.rcpt-meta-row span { color: #333; }
+.rcpt-meta-row strong { color: #000; }
+
+/* ── Items Table ── */
+.rcpt-items {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 6px;
+  font-size: 10.5px;
+}
+
+.rcpt-items thead {
+  border-bottom: 1.5px dashed #000;
+  border-top: 1.5px dashed #000;
+}
+
+.rcpt-items thead th {
+  padding: 4px 2px;
+  font-weight: 700;
+  text-align: right;
+  font-size: 9.5px;
+  color: #000;
+}
+
+.rcpt-items thead th.col-qty { text-align: center; width: 30px; }
+.rcpt-items thead th.col-price { text-align: left; width: 50px; }
+.rcpt-items thead th.col-total { text-align: left; width: 55px; }
+
+.rcpt-items tbody td {
+  padding: 3px 2px;
+  vertical-align: top;
+  color: #000;
+}
+
+.rcpt-items tbody td.col-qty { text-align: center; }
+.rcpt-items tbody td.col-price { text-align: left; }
+.rcpt-items tbody td.col-total { text-align: left; font-weight: 700; }
+
+.rcpt-items tbody tr { border-bottom: 0.5px dotted #ccc; }
+.rcpt-items tbody tr:last-child { border-bottom: none; }
+
+.rcpt-item-unit {
+  font-size: 8.5px;
+  color: #888;
+  display: block;
+}
+
+/* ── Dividers ── */
+.rcpt-divider { border-bottom: 1.5px dashed #000; margin: 6px 0; }
+.rcpt-divider-thin { border-bottom: 0.5px dotted #aaa; margin: 4px 0; }
+
+/* ── Totals ── */
+.rcpt-totals { font-size: 10.5px; margin-bottom: 6px; }
+
+.rcpt-totals-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3px;
+}
+
+.rcpt-totals-row .label { color: #333; }
+.rcpt-totals-row .value { font-weight: 700; color: #000; }
+
+.rcpt-grand-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-top: 2px dashed #000;
+  border-bottom: 2px dashed #000;
+  margin: 6px 0;
+}
+
+.rcpt-grand-total .label {
+  font-size: 13px;
+  font-weight: 900;
+  color: #000;
+  letter-spacing: 1px;
+}
+
+.rcpt-grand-total .value {
+  font-size: 15px;
+  font-weight: 900;
+  color: #000;
+}
+
+/* ── Payment ── */
+.rcpt-payment { font-size: 10px; margin-bottom: 6px; }
+
+.rcpt-payment-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2px;
+}
+
+/* ── Footer ── */
+.rcpt-footer {
+  text-align: center;
+  border-top: 1.5px dashed #000;
+  padding-top: 8px;
+  margin-top: 8px;
+}
+
+.rcpt-footer .thank-you {
+  font-size: 12px;
+  font-weight: 800;
+  color: #000;
+  margin-bottom: 4px;
+  letter-spacing: 1px;
+}
+
+.rcpt-footer .come-back {
+  font-size: 9px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.rcpt-qr-placeholder {
+  width: 60px; height: 60px;
+  border: 1.5px dashed #999;
+  border-radius: 6px;
+  margin: 0 auto 6px;
+  display: flex; align-items: center; justify-content: center;
+  color: #aaa; font-size: 1.5rem;
+}
+
+.rcpt-footer-legal {
+  font-size: 8px;
+  color: #999;
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+/* ── Print ── */
+@media print {
+  .receipt-wrapper {
+    box-shadow: none !important;
+    border: none !important;
+    width: 80mm;
+    padding: 4px;
+  }
+
+  .rcpt-logo-icon {
+    background: #000 !important;
+  }
+}

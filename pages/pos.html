@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>نقطة البيع | 7X Library Manager</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/pos.css">
+  <link rel="stylesheet" href="../assets/css/print/print.css">
+  <link rel="stylesheet" href="../assets/css/print/invoice.css">
+  <link rel="stylesheet" href="../assets/css/print/receipt.css">
+  <style>
+    .main-content {
+      padding: var(--navbar-height) 0 0 !important;
+    }
+
+    .pos-layout {
+      height: calc(100vh - var(--navbar-height));
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo"><img src="../assets/images/7x-library-logo.png" alt="7X" style="width:100%;height:100%;object-fit:contain;"></div>
+      <div class="sidebar-brand">
+        <h1>7X Library</h1><span>نظام إدارة المكتبة</span>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">الرئيسية</div>
+      <div class="nav-item"><a href="../index.html" class="nav-link"><i class="fa-solid fa-chart-pie"></i><span
+            class="nav-link-text">لوحة التحكم</span></a></div>
+      <div class="nav-item"><a href="pos.html" class="nav-link active"><i class="fa-solid fa-cash-register"></i><span
+            class="nav-link-text">نقطة البيع</span><span class="nav-badge">مباشر</span></a></div>
+      <div class="nav-item"><a href="services.html" class="nav-link"><i class="fa-solid fa-concierge-bell"></i><span
+            class="nav-link-text">الخدمات</span></a></div>
+      <div class="nav-item"><a href="products.html" class="nav-link"><i class="fa-solid fa-boxes-stacked"></i><span
+            class="nav-link-text">المنتجات</span></a></div>
+      <div class="nav-item"><a href="expenses.html" class="nav-link"><i
+            class="fa-solid fa-money-bill-transfer"></i><span class="nav-link-text">المصاريف</span></a></div>
+      <div class="nav-item"><a href="reports.html" class="nav-link"><i class="fa-solid fa-chart-bar"></i><span
+            class="nav-link-text">التقارير</span></a></div>
+      <div class="nav-item"><a href="settings.html" class="nav-link"><i class="fa-solid fa-gear"></i><span
+            class="nav-link-text">الإعدادات</span></a></div>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="user-avatar">م</div>
+        <div class="user-info"><strong>محمد المدير</strong><small>مدير النظام</small></div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="main-wrapper">
+    <header class="navbar" id="navbar">
+      <button class="navbar-toggle" id="navbarToggle"><i class="fa-solid fa-bars"></i></button>
+      <div class="navbar-breadcrumb">
+        <h1 class="page-title"><i class="fa-solid fa-cash-register" style="color:var(--gold-500)"></i> نقطة البيع</h1>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;margin-inline-start:auto">
+        <select class="form-select" style="width:180px" id="customerSelect">
+          <option value="">عميل عام</option>
+        </select>
+        <button class="nav-action-btn" id="theme-toggle"><i class="fa-solid fa-moon"></i></button>
+        <a href="../index.html" class="btn btn-ghost btn-sm"><i class="fa-solid fa-arrow-right"></i> الرئيسية</a>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="pos-layout">
+        <!-- Left: Products -->
+        <div class="pos-products">
+          <!-- Search -->
+          <div class="pos-search-bar" style="padding:0; border:none; margin-bottom:16px; position:relative;">
+            <span class="pos-search-icon"><i class="fa-solid fa-search"></i></span>
+            <input type="text" id="posSearch" placeholder="ابحث عن منتج أو أدخل الباركود..." oninput="filterPOS()">
+          </div>
+
+          <!-- Category Tabs -->
+          <div class="category-tabs" id="catTabs">
+            <button class="cat-tab active" onclick="filterByCategory('all',this)">الكل</button>
+          </div>
+
+          <!-- Product Grid -->
+          <div class="product-grid" id="posGrid"></div>
+        </div>
+
+        <!-- Right: Cart -->
+        <div class="pos-cart">
+          <div class="cart-header">
+            <h3><i class="fa-solid fa-shopping-cart" style="color:var(--primary-600)"></i> سلة البيع</h3>
+            <button class="btn btn-sm btn-outline-danger" onclick="clearCart()" title="مسح الكل"><i
+                class="fa-solid fa-trash"></i></button>
+          </div>
+
+          <div class="cart-items" id="cartItems">
+            <div class="cart-empty" id="cartEmpty">
+              <i class="fa-solid fa-cart-shopping"></i>
+              <p>السلة فارغة</p>
+              <p style="font-size:.8rem">ابحث عن منتج أو انقر عليه لإضافته</p>
+            </div>
+          </div>
+
+          <div class="cart-footer">
+            <div class="cart-totals">
+              <div class="cart-total-row"><span>عدد الأصناف</span><span id="itemCount">0</span></div>
+              <div class="cart-total-row"><span>المجموع الفرعي</span><span id="subtotal">0.00 د.م</span></div>
+              <div class="cart-total-row">
+                <span>الخصم</span>
+                <div style="display:flex;align-items:center;gap:4px">
+                  <input type="number" id="discountInput" min="0" max="100" value="0"
+                    style="width:56px;height:28px;padding:0 8px;border:1.5px solid var(--border-color);border-radius:var(--radius-sm);font-family:var(--font-sans);background:var(--bg-input);color:var(--text-primary);font-size:.85rem;outline:none"
+                    oninput="calcTotal()">
+                  <span style="font-size:.8rem;color:var(--text-muted)">%</span>
+                </div>
+              </div>
+              <div class="cart-total-row grand"><span>الإجمالي</span><span id="grandTotal">0.00 د.م</span></div>
+            </div>
+
+            <div class="pos-payment-row">
+              <div>
+                <div class="pos-input-label">المبلغ المدفوع</div>
+                <input type="number" class="pos-input" id="paidAmount" placeholder="0.00" oninput="calcChange()">
+              </div>
+              <div>
+                <div class="pos-input-label">الباقي للعميل</div>
+                <input type="number" class="pos-input" id="changeAmount" placeholder="0.00" readonly
+                  style="background:var(--success-light);color:var(--success-dark);font-weight:800">
+              </div>
+            </div>
+
+            <div style="display:flex;gap:8px">
+              <button class="btn btn-primary btn-full btn-lg btn-pulse" id="checkoutBtn" onclick="checkout()"><i
+                  class="fa-solid fa-check-circle"></i> إتمام البيع</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Receipt Modal -->
+  <div class="modal-overlay" id="receiptModal">
+    <div class="modal" style="max-width:420px">
+      <div class="modal-header">
+        <span class="modal-title"><i class="fa-solid fa-circle-check" style="color:#16a34a;margin-left:6px"></i> تمت عملية البيع</span>
+        <button class="modal-close" data-modal-close><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body" id="receiptContent"></div>
+      <div class="modal-footer" style="flex-direction:column;gap:8px;padding:16px 20px">
+        <div style="display:flex;gap:8px;width:100%">
+          <button class="btn btn-primary btn-full" onclick="showInvoicePreview()" style="flex:1">
+            <i class="fa-solid fa-file-invoice"></i> فاتورة رسمية
+          </button>
+          <button class="btn btn-outline-primary btn-full" onclick="showReceiptPreview()" style="flex:1">
+            <i class="fa-solid fa-receipt"></i> إيصال حراري
+          </button>
+        </div>
+        <button class="btn btn-ghost btn-full" data-modal-close onclick="newSale()">
+          <i class="fa-solid fa-rotate"></i> بيعة جديدة
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast-container"></div>
+  <script src="../assets/js/data.js"></script>
+  <script src="../assets/js/app.js"></script>
+  <script src="../assets/js/print/print-manager.js"></script>
+  <script src="../assets/js/print/invoice-generator.js"></script>
+  <script>
+    let cart = [];
+    let allProducts = [...DataStore.products];
+    let currentCategory = 'all';
+
+    // Init customers select
+    const custSel = document.getElementById('customerSelect');
+    DataStore.customers.forEach(c => {
+      const o = document.createElement('option');
+      o.value = c.id; o.textContent = c.name;
+      custSel.appendChild(o);
+    });
+
+    // Init categories
+    const catTabs = document.getElementById('catTabs');
+    const cats = [...new Set(allProducts.map(p => p.category))];
+    cats.forEach(cat => {
+      const btn = document.createElement('button');
+      btn.className = 'cat-tab';
+      btn.textContent = cat;
+      btn.onclick = function () { filterByCategory(cat, this); };
+      catTabs.appendChild(btn);
+    });
+
+    function filterByCategory(cat, btn) {
+      currentCategory = cat;
+      document.querySelectorAll('.cat-tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderGrid();
+    }
+
+    function filterPOS() {
+      renderGrid(document.getElementById('posSearch').value.toLowerCase());
+    }
+
+    function renderGrid(query = '') {
+      const filtered = allProducts.filter(p => {
+        const matchCat = currentCategory === 'all' || p.category === currentCategory;
+        const matchQ = !query || p.name.toLowerCase().includes(query) || p.barcode.includes(query);
+        return matchCat && matchQ;
+      });
+
+      document.getElementById('posGrid').innerHTML = filtered.map(p => `
+    <div class="product-card ${p.stock === 0 ? 'out-of-stock' : ''}" onclick="addToCart(${p.id})">
+      <div class="product-card-icon"><i class="fa-solid fa-tag"></i></div>
+      <div class="product-card-name">${p.name}</div>
+      <div class="product-card-price">${p.sellPrice.toFixed(2)} د.م</div>
+      <div class="product-card-stock">${p.stock === 0 ? 'نفذ' : p.stock + ' ' + p.unit}</div>
+    </div>`).join('');
+    }
+
+    function addToCart(productId) {
+      const p = allProducts.find(x => x.id === productId);
+      if (!p || p.stock === 0) return;
+      const existing = cart.find(x => x.id === productId);
+      if (existing) {
+        if (existing.qty >= p.stock) { Toast.warning('لا يوجد مخزون كافٍ'); return; }
+        existing.qty++;
+      } else {
+        cart.push({ id: p.id, name: p.name, price: p.sellPrice, qty: 1, max: p.stock });
+      }
+      renderCart();
+      Toast.show({ type: 'info', title: p.name, message: 'تمت الإضافة للسلة', duration: 1200 });
+    }
+
+    function renderCart() {
+      const container = document.getElementById('cartItems');
+      const empty = document.getElementById('cartEmpty');
+
+      if (cart.length === 0) {
+        empty.style.display = 'flex';
+        container.querySelectorAll('.cart-item').forEach(el => el.remove());
+        updateTotals();
+        return;
+      }
+      empty.style.display = 'none';
+
+      // Remove old items
+      container.querySelectorAll('.cart-item').forEach(el => el.remove());
+
+      cart.forEach((item, idx) => {
+        const div = document.createElement('div');
+        div.className = 'cart-item animate-fade-in';
+        div.innerHTML = `
+      <div class="cart-item-info">
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-price">${item.price.toFixed(2)} د.م / الوحدة</div>
+        <div class="cart-qty">
+          <button class="qty-btn" onclick="changeQty(${idx},-1)"><i class="fa-solid fa-minus"></i></button>
+          <span class="qty-val">${item.qty}</span>
+          <button class="qty-btn" onclick="changeQty(${idx},1)"><i class="fa-solid fa-plus"></i></button>
+        </div>
+      </div>
+      <div>
+        <div class="cart-item-subtotal">${(item.price * item.qty).toFixed(2)} د.م</div>
+        <button class="cart-item-remove" onclick="removeFromCart(${idx})"><i class="fa-solid fa-xmark"></i></button>
+      </div>`;
+        container.appendChild(div);
+      });
+      updateTotals();
+    }
+
+    function changeQty(idx, delta) {
+      const item = cart[idx];
+      const newQty = item.qty + delta;
+      if (newQty < 1) { removeFromCart(idx); return; }
+      if (newQty > item.max) { Toast.warning('لا يوجد مخزون كافٍ'); return; }
+      item.qty = newQty;
+      renderCart();
+    }
+
+    function removeFromCart(idx) {
+      cart.splice(idx, 1);
+      renderCart();
+    }
+
+    function clearCart() {
+      cart = [];
+      renderCart();
+    }
+
+    function updateTotals() {
+      const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
+      const discount = parseFloat(document.getElementById('discountInput').value) || 0;
+      const grand = subtotal * (1 - discount / 100);
+      document.getElementById('itemCount').textContent = cart.reduce((s, i) => s + i.qty, 0);
+      document.getElementById('subtotal').textContent = subtotal.toFixed(2) + ' د.م';
+      document.getElementById('grandTotal').textContent = grand.toFixed(2) + ' د.م';
+      document.getElementById('paidAmount').value = grand > 0 ? grand.toFixed(2) : '';
+      document.getElementById('changeAmount').value = '0.00';
+    }
+
+    function calcTotal() { updateTotals(); }
+
+    function calcChange() {
+      const grand = parseFloat(document.getElementById('grandTotal').textContent) || 0;
+      const paid = parseFloat(document.getElementById('paidAmount').value) || 0;
+      const change = Math.max(0, paid - grand);
+      document.getElementById('changeAmount').value = change.toFixed(2);
+    }
+
+
+
+    // Store last sale for invoice/receipt generation
+    let lastSaleData = null;
+
+    function checkout() {
+      if (cart.length === 0) { Toast.error('السلة فارغة'); return; }
+      const grand = parseFloat(document.getElementById('grandTotal').textContent) || 0;
+      const paid = parseFloat(document.getElementById('paidAmount').value) || grand;
+      const discount = parseFloat(document.getElementById('discountInput').value) || 0;
+      const invoiceNo = PrintManager.generateInvoiceNo('INV');
+      const custOpt = custSel.options[custSel.selectedIndex];
+      const customerName = custOpt && custOpt.value ? custOpt.text : 'عميل عام';
+
+      // Build sale data for generators
+      lastSaleData = InvoiceGenerator.fromCart(cart, {
+        invoiceNo,
+        customerName,
+        discount,
+        paid
+      });
+
+      // Show summary in modal
+      const fmt = PrintManager.formatMoney;
+      document.getElementById('receiptContent').innerHTML = `
+        <div style="background:var(--bg-hover);border-radius:var(--radius-md);padding:18px;margin-bottom:12px;border:1px solid var(--border-color)">
+          <div style="display:flex;justify-content:space-between;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border-color)">
+            <span style="color:var(--text-muted);font-size:.82rem">رقم الفاتورة</span>
+            <strong style="color:var(--primary-600);font-size:.85rem">${invoiceNo}</strong>
+          </div>
+          ${cart.map(i => `
+            <div style="display:flex;justify-content:space-between;margin-bottom:5px;font-size:.84rem">
+              <span>${i.name} <small style="color:var(--text-muted)">×${i.qty}</small></span>
+              <strong>${fmt(i.price * i.qty)} د.م</strong>
+            </div>`).join('')}
+          <div style="border-top:2px dashed var(--border-color);margin:12px 0;padding-top:12px;display:flex;justify-content:space-between;align-items:center">
+            <strong style="font-size:1rem">الإجمالي</strong>
+            <strong style="color:var(--primary-600);font-size:1.2rem">${fmt(grand)} د.م</strong>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:.82rem;margin-bottom:3px">
+            <span>المدفوع</span><span style="color:var(--success-dark)">${fmt(paid)} د.م</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:.82rem">
+            <span>الباقي</span><span style="color:var(--success-dark);font-weight:700">${document.getElementById('changeAmount').value} د.م</span>
+          </div>
+        </div>`;
+
+      App.openModal('receiptModal');
+    }
+
+    function showInvoicePreview() {
+      if (!lastSaleData) return;
+      App.closeModal('receiptModal');
+      InvoiceGenerator.previewInvoice(lastSaleData);
+    }
+
+    function showReceiptPreview() {
+      if (!lastSaleData) return;
+      App.closeModal('receiptModal');
+      InvoiceGenerator.previewReceipt(lastSaleData);
+    }
+
+    function newSale() {
+      clearCart();
+      document.getElementById('discountInput').value = 0;
+      App.closeModal('receiptModal');
+      Toast.success('جاهز لبيعة جديدة');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderGrid();
+      updateTotals();
+    });
+  </script>
+</body>
+
+</html>

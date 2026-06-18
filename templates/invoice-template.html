@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>فاتورة بيع | 7X Library Manager</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/print/print.css">
+  <link rel="stylesheet" href="../assets/css/print/invoice.css">
+  <style>
+    body { background: #1e293b; margin: 0; padding: 40px 20px; font-family: 'Cairo', sans-serif; }
+    .page-controls {
+      max-width: 210mm; margin: 0 auto 24px; display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 12px;
+    }
+    .page-controls .title-area { display: flex; align-items: center; gap: 10px; color: #fff; }
+    .page-controls .title-area i { color: #d4af37; font-size: 1.2rem; }
+    .page-controls .title-area h2 { font-size: 1.1rem; font-weight: 700; }
+    .page-controls .btns { display: flex; gap: 8px; }
+    .ctrl-btn {
+      padding: 8px 18px; border: none; border-radius: 6px; cursor: pointer;
+      font-family: 'Cairo', sans-serif; font-size: .82rem; font-weight: 700;
+      display: flex; align-items: center; gap: 6px; transition: all .2s;
+    }
+    .ctrl-btn.gold { background: linear-gradient(135deg, #d4af37, #b8960c); color: #fff; }
+    .ctrl-btn.gold:hover { filter: brightness(1.1); transform: translateY(-1px); }
+    .ctrl-btn.ghost { background: rgba(255,255,255,.1); color: #fff; border: 1px solid rgba(255,255,255,.2); }
+    .ctrl-btn.ghost:hover { background: rgba(255,255,255,.2); }
+    .ctrl-btn.back { background: rgba(255,255,255,.06); color: rgba(255,255,255,.6); }
+    .ctrl-btn.back:hover { background: rgba(255,255,255,.12); color: #fff; }
+    @media print {
+      body { background: #fff !important; padding: 0 !important; }
+      .page-controls { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Controls (hidden on print) -->
+  <div class="page-controls">
+    <div class="title-area">
+      <i class="fa-solid fa-file-invoice"></i>
+      <h2>معاينة الفاتورة</h2>
+    </div>
+    <div class="btns">
+      <button class="ctrl-btn back" onclick="history.back()">
+        <i class="fa-solid fa-arrow-right"></i> رجوع
+      </button>
+      <button class="ctrl-btn ghost" onclick="window.print()">
+        <i class="fa-solid fa-file-pdf"></i> تصدير PDF
+      </button>
+      <button class="ctrl-btn gold" onclick="window.print()">
+        <i class="fa-solid fa-print"></i> طباعة
+      </button>
+    </div>
+  </div>
+
+  <!-- Invoice container -->
+  <div id="invoice-container"></div>
+
+  <script src="../assets/js/data.js"></script>
+  <script src="../assets/js/print/print-manager.js"></script>
+  <script src="../assets/js/print/invoice-generator.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Get sale data from URL params or use demo
+      const params = new URLSearchParams(window.location.search);
+      const saleId = params.get('id');
+
+      let saleData;
+
+      if (saleId && DataStore.sales) {
+        const sale = DataStore.sales.find(s => s.id == saleId);
+        if (sale) {
+          saleData = InvoiceGenerator.fromCart(
+            sale.items.map(p => ({ name: p.name, barcode: p.barcode, qty: Math.ceil(Math.random() * 3) + 1, price: p.sellPrice })),
+            { invoiceNo: sale.invoiceNo, customerName: sale.customerName, discount: sale.discount, paid: sale.paid }
+          );
+        }
+      }
+
+      // Fallback: demo invoice
+      if (!saleData) {
+        saleData = InvoiceGenerator.fromCart([
+          { name: 'كراسة مسطرة 96 ورقة', barcode: '6111000001', qty: 5, price: 7.00 },
+          { name: 'قلم بيك كريستال أزرق', barcode: '6111000002', qty: 10, price: 2.00 },
+          { name: 'ورق تصوير A4 (رزمة 500)', barcode: '6111000003', qty: 2, price: 40.00 },
+          { name: 'مجلد A4 بلاستيك', barcode: '6111000005', qty: 4, price: 5.00 },
+          { name: 'حاسبة كاسيو FX-82', barcode: '6111000008', qty: 1, price: 95.00 },
+        ], {
+          invoiceNo: 'INV-2026-0045',
+          customerName: 'محمد الصبار',
+          customerPhone: '0612345678',
+          discount: 5,
+          paid: 250,
+          notes: 'شكراً لتعاملكم الدائم مع مكتبة 7X. نتمنى لكم يوماً موفقاً.'
+        });
+      }
+
+      document.getElementById('invoice-container').innerHTML = InvoiceGenerator.buildInvoice(saleData);
+    });
+  </script>
+</body>
+</html>

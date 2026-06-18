@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>الإعدادات | 7X Library Manager</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/variables.css">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/layout.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  
+</head>
+<body>
+<div class="sidebar-overlay" id="sidebarOverlay"></div><aside class="sidebar" id="sidebar"><div class="sidebar-header"><div class="sidebar-logo"><img src="../assets/images/7x-library-logo.png" alt="7X" style="width:100%;height:100%;object-fit:contain;"></div><div class="sidebar-brand"><h1>7X Library Manager</h1><span>نظام إدارة متكامل</span></div></div><nav class="sidebar-nav"><div class="nav-section-label">الرئيسية</div><div class="nav-item"><a href="../index.html" class="nav-link"><i class="fa-solid fa-house"></i><span class="nav-link-text">لوحة التحكم</span></a></div><div class="nav-section-label">نقطة البيع</div><div class="nav-item"><a href="pos.html" class="nav-link"><i class="fa-solid fa-cash-register"></i><span class="nav-link-text">نقطة البيع</span></a></div><div class="nav-item"><a href="services.html" class="nav-link"><i class="fa-solid fa-hand-holding-dollar"></i><span class="nav-link-text">الخدمات</span></a></div><div class="nav-section-label">المنتجات</div><div class="nav-item has-submenu"><a href="#" class="nav-link"><i class="fa-solid fa-cubes"></i><span class="nav-link-text">المنتجات</span></a><div class="sub-menu"><div class="nav-item"><a href="products.html" class="nav-link"><i class="fa-solid fa-table-list"></i><span class="nav-link-text">قائمة المنتجات</span></a></div><div class="nav-item"><a href="product-add.html" class="nav-link"><i class="fa-solid fa-circle-plus"></i><span class="nav-link-text">إضافة منتج</span></a></div><div class="nav-item"><a href="categories.html" class="nav-link"><i class="fa-solid fa-layer-group"></i><span class="nav-link-text">الأصناف</span></a></div></div></div><div class="nav-section-label">العملاء والموردون</div><div class="nav-item"><a href="customers.html" class="nav-link"><i class="fa-solid fa-user-group"></i><span class="nav-link-text">العملاء</span></a></div><div class="nav-item"><a href="suppliers.html" class="nav-link"><i class="fa-solid fa-building-columns"></i><span class="nav-link-text">الموردون</span></a></div><div class="nav-section-label">التقارير</div><div class="nav-item has-submenu"><a href="#" class="nav-link"><i class="fa-solid fa-chart-mixed"></i><span class="nav-link-text">التقارير</span></a><div class="sub-menu"><div class="nav-item"><a href="reports.html" class="nav-link"><i class="fa-solid fa-chart-line"></i><span class="nav-link-text">لوحة التقارير</span></a></div><div class="nav-item"><a href="report-sales.html" class="nav-link"><i class="fa-solid fa-arrow-trend-up"></i><span class="nav-link-text">تقرير المبيعات</span></a></div></div></div><div class="nav-section-label">النظام</div><div class="nav-item"><a href="settings.html" class="nav-link"><i class="fa-solid fa-sliders"></i><span class="nav-link-text">الإعدادات</span></a></div><div class="nav-item"><a href="profile.html" class="nav-link"><i class="fa-solid fa-circle-user"></i><span class="nav-link-text">الملف الشخصي</span></a></div><div class="nav-item"><a href="activity-logs.html" class="nav-link"><i class="fa-solid fa-timeline"></i><span class="nav-link-text">سجل النشاط</span></a></div><div class="nav-item"><a href="help.html" class="nav-link"><i class="fa-solid fa-circle-question"></i><span class="nav-link-text">المساعدة</span></a></div></nav><div class="sidebar-footer"><div class="sidebar-user"><div class="user-avatar">م</div><div class="user-info"><strong>محمد المدير</strong><small>admin@7xlibrary.ma</small></div></div></div></aside>
+<div class="main-wrapper">
+<header class="navbar" id="navbar"><button class="navbar-toggle" id="navbarToggle"><i class="fa-solid fa-bars"></i></button><div class="navbar-breadcrumb"><a href="../index.html" style="color:var(--text-muted);font-size:.78rem">Dashboard</a><span style="margin:0 6px;color:var(--gray-300)">/</span><h1 class="page-title">الإعدادات</h1></div><div class="navbar-search"><i class="fa-solid fa-magnifying-glass"></i><input type="search" placeholder="Search..."></div><div class="navbar-actions"><a href="pos.html" class="nav-action-btn" style="color:var(--gold-500)"><i class="fa-solid fa-cash-register"></i></a><button class="nav-action-btn" id="theme-toggle"><i class="fa-solid fa-moon"></i></button><button class="nav-action-btn" id="lang-toggle"><i class="fa-solid fa-globe"></i></button></div></header>
+<main class="main-content">
+<div class="page-header"><div class="page-header-title"><h2>الإعدادات</h2><p>تخصيص وضبط النظام</p></div></div>
+<div style="display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:start">
+  <div class="card" style="padding:8px">
+    <nav style="display:flex;flex-direction:column;gap:2px">
+      <button class="settings-tab active" onclick="switchTab(this,'general')"><i class="fa-solid fa-sliders"></i> عام</button>
+      <button class="settings-tab" onclick="switchTab(this,'store')"><i class="fa-solid fa-store"></i> المتجر</button>
+      <button class="settings-tab" onclick="switchTab(this,'receipt')"><i class="fa-solid fa-receipt"></i> الفاتورة</button>
+      <button class="settings-tab" onclick="switchTab(this,'users')"><i class="fa-solid fa-users-gear"></i> المستخدمون</button>
+      <button class="settings-tab" onclick="switchTab(this,'backup')"><i class="fa-solid fa-database"></i> النسخ الاحتياطي</button>
+    </nav>
+  </div>
+  <div>
+    <div id="tab-general">
+      <div class="card" style="margin-bottom:16px"><div class="card-header"><div class="card-title">إعدادات المظهر</div></div><div class="card-body">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border-color)"><div><div style="font-size:.8125rem;font-weight:600">الوضع الليلي</div><div style="font-size:.75rem;color:var(--text-muted)">تفعيل الثيم الداكن</div></div><input type="checkbox" class="form-switch" id="darkModeSwitch" onchange="App.toggleTheme()"></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border-color)"><div><div style="font-size:.8125rem;font-weight:600">الاتجاه</div><div style="font-size:.75rem;color:var(--text-muted)">RTL / LTR</div></div><input type="checkbox" class="form-switch" onchange="App.toggleLang()"></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 0"><div><div style="font-size:.8125rem;font-weight:600">الشريط الجانبي</div><div style="font-size:.75rem;color:var(--text-muted)">تصغير الشريط الجانبي</div></div><input type="checkbox" class="form-switch" onchange="App.toggleSidebar()"></div>
+      </div></div>
+      <div class="card"><div class="card-header"><div class="card-title">إعدادات النظام</div></div><div class="card-body">
+        <div class="form-group"><label class="form-label">لغة النظام</label><select class="form-select"><option selected>العربية</option><option>Français</option><option>English</option></select></div>
+        <div class="form-group"><label class="form-label">العملة</label><select class="form-select"><option selected>درهم مغربي (MAD)</option><option>دولار أمريكي (USD)</option><option>يورو (EUR)</option></select></div>
+        <div class="form-group"><label class="form-label">تنسيق التاريخ</label><select class="form-select"><option>DD/MM/YYYY</option><option>MM/DD/YYYY</option><option>YYYY-MM-DD</option></select></div>
+        <button class="btn btn-primary" onclick="Toast.success('تم حفظ الإعدادات بنجاح')"><i class="fa-solid fa-floppy-disk"></i> حفظ التغييرات</button>
+      </div></div>
+    </div>
+    <div id="tab-store" style="display:none">
+      <div class="card"><div class="card-header"><div class="card-title">معلومات المتجر</div></div><div class="card-body">
+        <div class="form-group"><label class="form-label">اسم المكتبة</label><input class="form-control" type="text" id="invStoreName" value="مكتبة 7X"></div>
+        <div class="form-group">
+          <label class="form-label">شعار المكتبة</label>
+          <input class="form-control" type="file" id="invLogoInput" accept="image/*" onchange="previewLogo(this)">
+          <div style="margin-top:10px">
+            <img id="invLogoPreview" src="" style="display:none; max-width:80px; max-height:80px; border-radius:8px; border:1px solid var(--border-color); object-fit:cover;">
+          </div>
+        </div>
+        <div class="form-row form-row-2"><div class="form-group"><label class="form-label">الهاتف</label><input class="form-control" type="tel" value="0600000000"></div><div class="form-group"><label class="form-label">المدينة</label><input class="form-control" type="text" value="الدار البيضاء"></div></div>
+        <div class="form-group"><label class="form-label">العنوان</label><input class="form-control" type="text" value="شارع محمد الخامس، الدار البيضاء"></div>
+        <div class="form-group"><label class="form-label">رقم الضريبة (ICE)</label><input class="form-control" type="text" placeholder="000000000000000"></div>
+        <button class="btn btn-primary" onclick="saveStoreSettings()"><i class="fa-solid fa-floppy-disk"></i> حفظ التغييرات</button>
+      </div></div>
+    </div>
+    <div id="tab-receipt" style="display:none">
+      <div class="card"><div class="card-header"><div class="card-title">إعدادات الفاتورة</div></div><div class="card-body">
+        <div class="form-group"><label class="form-label">رسالة الترحيب</label><input class="form-control" type="text" value="شكراً على زيارتكم!"></div>
+        <div class="form-group"><label class="form-label">رسالة الختام</label><input class="form-control" type="text" value="نتمنى لكم يوماً سعيداً"></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-top:1px solid var(--border-color)"><div><div style="font-size:.8125rem;font-weight:600">طباعة تلقائية</div></div><input type="checkbox" class="form-switch" checked></div>
+        <button class="btn btn-primary" onclick="Toast.success('تم حفظ إعدادات الفاتورة')"><i class="fa-solid fa-floppy-disk"></i> حفظ التغييرات</button>
+      </div></div>
+    </div>
+    <div id="tab-users" style="display:none">
+      <div class="card"><div class="card-header"><div class="card-title">إدارة المستخدمين</div><button class="btn btn-primary btn-sm" onclick="openUserModal()"><i class="fa-solid fa-user-plus"></i> إضافة</button></div>
+      <table class="table"><thead><tr><th>المستخدم</th><th>الدور</th><th>آخر دخول</th><th>الحالة</th></tr></thead>
+      <tbody><tr><td><div style="display:flex;align-items:center;gap:10px"><div class="avatar avatar-sm">م</div><div><div style="font-weight:600">محمد المدير</div><div style="font-size:.72rem;color:var(--text-muted)">admin@7xlibrary.ma</div></div></div></td><td><span class="badge badge-primary">مدير</span></td><td style="color:var(--text-muted);font-size:.78rem">الآن</td><td><span class="badge badge-success badge-dot">نشط</span></td></tr></tbody>
+      </table></div>
+    </div>
+    <div id="tab-backup" style="display:none">
+      <div class="card"><div class="card-header"><div class="card-title">النسخ الاحتياطي والاستعادة</div></div><div class="card-body">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px">
+          <div style="border:1px solid var(--border-color);border-radius:var(--radius-md);padding:20px;text-align:center"><i class="fa-solid fa-cloud-arrow-up" style="font-size:1.5rem;color:var(--primary-600);margin-bottom:10px"></i><div style="font-size:.875rem;font-weight:700;margin-bottom:4px">نسخ احتياطي</div><div style="font-size:.75rem;color:var(--text-muted);margin-bottom:12px">تصدير جميع البيانات</div><button class="btn btn-primary btn-sm" onclick="Toast.success('جاري إنشاء النسخة الاحتياطية...')"><i class="fa-solid fa-download"></i> تصدير</button></div>
+          <div style="border:1px solid var(--border-color);border-radius:var(--radius-md);padding:20px;text-align:center"><i class="fa-solid fa-cloud-arrow-down" style="font-size:1.5rem;color:var(--success);margin-bottom:10px"></i><div style="font-size:.875rem;font-weight:700;margin-bottom:4px">استعادة البيانات</div><div style="font-size:.75rem;color:var(--text-muted);margin-bottom:12px">رفع ملف نسخة احتياطية</div><button class="btn btn-outline-primary btn-sm" onclick="Toast.warning('استعادة البيانات ستؤدي إلى استبدال البيانات الحالية')"><i class="fa-solid fa-upload"></i> استعادة</button></div>
+        </div>
+      </div></div>
+    </div>
+  </div>
+</div>
+<style>
+.settings-tab { display:flex;align-items:center;gap:8px;width:100%;padding:8px 12px;border:none;background:none;cursor:pointer;border-radius:var(--radius-sm);font-size:.8125rem;font-weight:500;color:var(--text-muted);transition:all .12s;font-family:var(--font-sans);text-align:right; }
+.settings-tab:hover { background:var(--bg-hover);color:var(--text-primary); }
+.settings-tab.active { background:var(--bg-active);color:var(--primary-600);font-weight:700; }
+.settings-tab i { width:16px;font-size:.8rem; }
+</style>
+</main></div>
+
+<div class="modal-overlay" id="userModalOverlay" onclick="closeUserModal()">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <div class="modal-title">إضافة مستخدم جديد</div>
+      <button class="modal-close" onclick="closeUserModal()"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label class="form-label">الاسم الكامل</label>
+        <input type="text" class="form-control" id="newUserName" placeholder="مثال: أحمد محمود">
+      </div>
+      <div class="form-group">
+        <label class="form-label">البريد الإلكتروني</label>
+        <input type="email" class="form-control" id="newUserEmail" placeholder="email@example.com">
+      </div>
+      <div class="form-row form-row-2">
+        <div class="form-group">
+          <label class="form-label">الدور</label>
+          <select class="form-select" id="newUserRole">
+            <option value="مدير">مدير</option>
+            <option value="كاشير">كاشير</option>
+            <option value="أمين مخزن">أمين مخزن</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">كلمة المرور</label>
+          <input type="password" class="form-control" id="newUserPass" placeholder="••••••••">
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeUserModal()">إلغاء</button>
+      <button class="btn btn-primary" onclick="saveNewUser()"><i class="fa-solid fa-check"></i> حفظ المستخدم</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast-container"></div>
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/app.js"></script>
+<script>
+function switchTab(btn, id) {
+  document.querySelectorAll('.settings-tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  ['general','store','receipt','users','backup'].forEach(t=>{
+    const el = document.getElementById('tab-'+t);
+    if(el) el.style.display = t===id?'block':'none';
+  });
+}
+let currentLogoBase64 = localStorage.getItem('inv_logo') || '';
+
+function previewLogo(input) {
+  if (input.files && input.files[0]) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const img = new Image();
+      img.onload = function() {
+        const canvas = document.createElement('canvas');
+        const MAX_SIZE = 300;
+        let width = img.width;
+        let height = img.height;
+        if (width > height && width > MAX_SIZE) {
+          height *= MAX_SIZE / width;
+          width = MAX_SIZE;
+        } else if (height > MAX_SIZE) {
+          width *= MAX_SIZE / height;
+          height = MAX_SIZE;
+        }
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, width, height);
+        currentLogoBase64 = canvas.toDataURL('image/png');
+        
+        const preview = document.getElementById('invLogoPreview');
+        preview.src = currentLogoBase64;
+        preview.style.display = 'block';
+      }
+      img.src = e.target.result;
+    }
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+function saveStoreSettings() {
+  try {
+    const name = document.getElementById('invStoreName').value;
+    localStorage.setItem('inv_storeName', name);
+    if(currentLogoBase64) {
+      localStorage.setItem('inv_logo', currentLogoBase64);
+    }
+    Toast.success('تم حفظ معلومات المتجر بنجاح');
+  } catch (err) {
+    console.error(err);
+    if (err.name === 'QuotaExceededError') {
+      Toast.error('مساحة المتصفح ممتلئة! يرجى اختيار صورة بحجم أصغر جداً.');
+    } else {
+      Toast.error('حدث خطأ أثناء حفظ الإعدادات');
+    }
+  }
+}
+
+function openUserModal() {
+  document.getElementById('userModalOverlay').classList.add('open');
+}
+
+function closeUserModal() {
+  document.getElementById('userModalOverlay').classList.remove('open');
+}
+
+function saveNewUser() {
+  const name = document.getElementById('newUserName').value;
+  const email = document.getElementById('newUserEmail').value;
+  const role = document.getElementById('newUserRole').value;
+  
+  if(!name || !email) {
+    Toast.error('يرجى تعبئة الحقول المطلوبة');
+    return;
+  }
+  
+  const tbody = document.querySelector('#tab-users tbody');
+  const letter = name.charAt(0);
+  const row = document.createElement('tr');
+  row.innerHTML = `<td><div style="display:flex;align-items:center;gap:10px"><div class="avatar avatar-sm">${letter}</div><div><div style="font-weight:600">${name}</div><div style="font-size:.72rem;color:var(--text-muted)">${email}</div></div></div></td><td><span class="badge badge-primary">${role}</span></td><td style="color:var(--text-muted);font-size:.78rem">-</td><td><span class="badge badge-success badge-dot">نشط</span></td>`;
+  tbody.appendChild(row);
+  
+  Toast.success('تمت إضافة المستخدم بنجاح');
+  closeUserModal();
+  
+  document.getElementById('newUserName').value = '';
+  document.getElementById('newUserEmail').value = '';
+  document.getElementById('newUserPass').value = '';
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  const theme = localStorage.getItem('7x_theme');
+  if(theme==='dark') document.getElementById('darkModeSwitch').checked = true;
+
+  const storedName = localStorage.getItem('inv_storeName');
+  if(storedName) document.getElementById('invStoreName').value = storedName;
+  
+  if(currentLogoBase64) {
+    const img = document.getElementById('invLogoPreview');
+    img.src = currentLogoBase64;
+    img.style.display = 'block';
+  }
+});
+</script>
+</body></html>
