@@ -32,7 +32,7 @@
   <div class="sidebar-overlay" id="sidebarOverlay"></div>
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-header">
-      <div class="sidebar-logo"><img src="../assets/images/7x-library-logo.png" alt="7X" style="width:100%;height:100%;object-fit:contain;"></div>
+      <div class="sidebar-logo"><i class="fa-solid fa-book-open"></i></div>
       <div class="sidebar-brand">
         <h1>7X Library</h1><span>نظام إدارة المكتبة</span>
       </div>
@@ -82,9 +82,11 @@
         <!-- Left: Products -->
         <div class="pos-products">
           <!-- Search -->
-          <div class="pos-search-bar" style="padding:0; border:none; margin-bottom:16px; position:relative;">
+          <div style="position:relative;margin-bottom:16px">
             <span class="pos-search-icon"><i class="fa-solid fa-search"></i></span>
-            <input type="text" id="posSearch" placeholder="ابحث عن منتج أو أدخل الباركود..." oninput="filterPOS()">
+            <input type="text" id="posSearch" placeholder="ابحث عن منتج أو أدخل الباركود..."
+              style="width:100%;height:46px;padding:0 46px 0 16px;border:2px solid var(--border-color);border-radius:var(--radius-md);background:var(--bg-card);color:var(--text-primary);font-family:var(--font-sans);font-size:.95rem;outline:none;transition:all .2s"
+              oninput="filterPOS()">
           </div>
 
           <!-- Category Tabs -->
@@ -141,7 +143,9 @@
             </div>
 
             <div style="display:flex;gap:8px">
-              <button class="btn btn-primary btn-full btn-lg btn-pulse" id="checkoutBtn" onclick="checkout()"><i
+              <button class="btn btn-outline-primary btn-full" onclick="holdSale()"><i class="fa-solid fa-pause"></i>
+                تعليق</button>
+              <button class="btn btn-primary btn-full btn-lg" id="checkoutBtn" onclick="checkout()" style="flex:2"><i
                   class="fa-solid fa-check-circle"></i> إتمام البيع</button>
             </div>
           </div>
@@ -320,7 +324,7 @@
       document.getElementById('changeAmount').value = change.toFixed(2);
     }
 
-
+    function holdSale() { Toast.info('تم تعليق الفاتورة'); }
 
     // Store last sale for invoice/receipt generation
     let lastSaleData = null;

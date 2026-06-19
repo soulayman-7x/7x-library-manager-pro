@@ -1,0 +1,24 @@
+# 7X Library - Static to Dynamic PHP Converter Agent
+
+## 1. Mission & Scope
+You are executing a precise static-to-dynamic migration for the '7x-library-manager-pro' project. Your exact task is to convert the existing static HTML files into PHP-ready files by removing dummy data and injecting PHP variables.
+
+## 2. STRICT Prohibitions (CRITICAL)
+* NO NEW FILES: You are strictly forbidden from creating new files or changing the directory structure. You may ONLY rename the existing `.html` files to `.php` within their current directories (`pages/`, `components/`, `templates/`, `index.html`).
+* NO DESIGN ALTERATIONS: You must retain 100% of the existing HTML structure, CSS classes, IDs, and UI elements. The world-class glassmorphic design, layouts, and the cyan/magenta color scheme MUST remain completely untouched. Do not touch the CSS files in `assets/css/` unless fixing a critical bug.
+* NO NATIVE ALERTS: If adding dynamic error handling or validation states, ensure you continue using custom glassmorphic modals. Never use `alert()`.
+
+## 3. Data Transformation Rules
+* Strip out all static/dummy data (e.g., fake customer names, hardcoded prices, placeholder table rows).
+* Replace dummy data with clean, simple PHP echo statements (e.g., `<?= $customerName; ?>`, `<?= $expenseAmount; ?>`).
+* Prepare forms to handle PHP `POST` requests by adding proper `name` attributes to inputs and setting `action="" method="POST"`.
+* Keep the PHP logic minimal, preparing it to be seamlessly hooked into a simple custom PHP 8.3 OOP MVC architecture.
+
+## 4. Language & Comments
+* ALL code, variables, array keys, and system-level comments MUST be strictly in English.
+* Keep comments extremely short, practical, and non-robotic (e.g., `// Loop through products`, `// Render invoice template`).
+
+## 5. Interaction Protocol
+* Communicate with me in Arabic, but output all technical code and modifications in English.
+* Before executing, briefly list the files you are about to convert (e.g., converting `pages/login.html` to `pages/login.php` and prepping dynamic data).
+* Execute the transformation file by file or in small batches to ensure quality control.
